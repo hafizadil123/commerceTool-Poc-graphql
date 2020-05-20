@@ -1,0 +1,207 @@
+.header{
+  position: fixed;
+  top:0;
+  left: 0;
+  width:100%;
+  z-index: 999;
+  .topbar{
+    background-color:#da291c;
+    .bar-item a{
+      color:white;
+    }
+    .topbar__inner{
+      min-height:50px;
+      padding:0 24px;
+      display:flex;
+      align-items: center;
+      margin:0 auto;
+      max-width: 1248px;
+      .topbar-links{
+        flex:4;
+        .bold{
+          font-weight: 600;
+        }
+      }
+      .topbar-nav{
+        flex:8;
+        text-align: right;
+        .header-brand{
+          display: none;
+        }
+      }
+    }
+  }
+  .hamburger{
+    display:none;
+  }
+  .main-navbar{
+    background: rgba(255,255,255,.95);
+    box-shadow: 1px 1px 4px 0 rgba(0,0,0,.1);
+    .navbar-inner{
+      display: flex;
+      align-items: center;
+      padding: 0 24px;
+      max-width: 1248px;
+      height: 100px;
+      margin: 0 auto;
+      .header-brand{
+        flex:2;
+        order:0;
+        a{
+          display: inline-block;
+        }
+        img{
+          max-width: 100%;
+          max-height: 39px;
+        }
+      }
+      .main-navigation{
+        flex:7;
+        text-align: center;
+        .item-link{
+          color:black;
+          height: 100px;
+          position: relative;
+          display: flex;
+          align-items: center;
+          text-transform: capitalize;
+          font-size: 1.5rem;
+          position: relative;
+          &:hover{
+            text-decoration: none;
+          }
+        }
+        .bar-item:hover .item-link::after{
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          display: block;
+          height: 4px;
+          width: 100%;
+          background: #333;
+          border-radius: 5px 5px 0 0;
+        }
+      }
+      .quicklinks{
+        flex:2;
+        text-align: right;
+        i{
+          color:black;
+        }
+      }
+    }
+  }
+  .bar-item{
+    display: inline-block;
+    margin:0 24px 0 0;
+    a{
+      text-transform: uppercase;
+      display: block;
+      font-weight: 300;
+    }
+    &:last-child{
+      margin:0;
+    }
+  }
+  @include media-breakpoint-down(sm){
+    .topbar{
+      background: rgba(255,255,255,.95);
+      box-shadow: 1px 1px 4px 0 rgba(0,0,0,.1);
+      .bar-item a{
+        color:black;
+      }
+      .topbar__inner{
+        position: relative;
+        .topbar-links{
+          display: none;
+        }
+        .topbar-nav{
+          width:100%;
+          display:flex;
+          align-items: center;
+          justify-content: space-between;
+          text-align: left;
+          .header-brand{
+            display: block;
+            a{
+              display: block;
+              img{
+                width:140px;
+              }
+            }
+          }
+        }
+      }
+    }
+    .bar-item{
+      display: block;
+      margin:0;
+      padding:10px;
+    }
+    .hamburger{
+      display: block;
+      cursor: pointer;
+      position: relative;
+      width: 25px;
+      height: 25px;
+      background: none;
+      border: none;
+      span{
+        position: absolute;
+        left: 0;
+        display: inline-block;
+        margin: 0;
+        height: 2px;
+        width: 100%;
+        background: #858585;
+        border-radius: 5px;
+      }
+      .mobilenav-line1{
+        top: 2px;
+        transform: rotate(0deg);
+      }
+      .mobilenav-line2{
+        top: calc(50% - 1px);
+        opacity: 1;
+      }
+      .mobilenav-line3{
+        bottom: 2px;
+        transform: rotate(0deg);
+      }
+    }
+    .menu{
+      position: fixed;
+      top:50px;
+      left:-100%;
+      width:100%;
+      max-height: calc(100% - 50px);
+      overflow: auto;
+      padding: 12px 24px;
+      background: #fff;
+      box-shadow: 1px 1px 4px 0 rgba(0,0,0,.1);
+      transition: all 1s ease;
+    }
+    .main-navbar{
+      display: none;
+    }
+    &.open{
+      .hamburger{
+        .mobilenav-line1{
+          top: calc(46.5%);
+          transform: rotate(-45deg);
+        }
+        .mobilenav-line2{
+          opacity: 0;
+        }
+        .mobilenav-line3{
+          bottom: calc(46%);
+          transform: rotate(45deg);
+        }
+      }
+      .menu{
+        left:0;
+      }
+    }
+  }
+}

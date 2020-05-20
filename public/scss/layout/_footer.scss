@@ -1,0 +1,16 @@
+footer{
+  border-top:1px solid #939598;
+  .footer-logo-link{
+    display: inline-block;
+    .footer-logo{
+      min-height: 80px;
+      display:flex;
+      justify-content: center;
+      align-items: center;
+      img{
+        max-width: 100%;
+        width:140px;
+      }
+    }
+  }
+}
