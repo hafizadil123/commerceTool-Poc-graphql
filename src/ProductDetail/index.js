@@ -78,7 +78,7 @@ const DetailPage = ({ history }) => {
       .get(
         `https://api.us-central1.gcp.commercetools.com/commerce-tool-poc/products/${queryString}`,
         {
-          headers: { Authorization: "Bearer VxJmVCm5sIDC7HJnbUIQEgNFhb7V8KAE" },
+          headers: { Authorization: "Bearer xyO61RJgrwwMLDhS_06S06K1NUI2uVRW" },
         }
       )
       .then((response) =>
@@ -138,7 +138,7 @@ console.log(restAPI &&
     flatPlans.filter((plan) => {
       return plan.name === "data-plan";
     });
-    
+
   const getMemory = (arr) => {
     return arr.find((el) => el.name === "memory");
   };
