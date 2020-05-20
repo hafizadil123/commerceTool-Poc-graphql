@@ -14,7 +14,8 @@ const Main = (props) => {
 
   useEffect(() => {
     getProducts("443a3360-48c2-4852-a32a-1002ec3e12c3");
-  }, []);
+  }, [data]);
+
   const getCategory =
     products &&
     products.results.map(
@@ -26,7 +27,7 @@ const Main = (props) => {
   const FlattenArray = getCategory.flat(Infinity);
 
   const getProducts = (categoryId) => {
-    console.log('cateogries', categoryId);
+    console.log("cateogries", categoryId);
     const final =
       data &&
       data.results.filter((product, index) => {
@@ -205,9 +206,9 @@ const Main = (props) => {
                             aria-controls={item.name}
                             aria-selected="true"
                           >
-                            {index !== 0 ? 'Smart Phones' : 'Basic Phones' }
+                            {index !== 0 ? "Smart Phones" : "Basic Phones"}
 
-                            {console.log("final",  FlattenArray.slice(0, 2))}
+                            {console.log("final", FlattenArray.slice(0, 2))}
                           </a>
                         </li>
                       ))}
