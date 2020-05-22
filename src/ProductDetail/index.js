@@ -11,58 +11,57 @@ import { Link } from "react-router-dom";
 
 import Footer from "../Footer";
 const PRODUCTS = gql`
-query p {
-  products(limit: 10, sort: "masterData.current.name.en desc") {
-    count
-    results {
-      id
-      skus
-      createdAt
+  query p {
+    products(limit: 10, sort: "masterData.current.name.en desc") {
+      count
+      results {
+        id
+        skus
+        createdAt
 
-      masterData {
-        current {
-          name(locale: "EN-US")
-          description(locale: "EN-US")
-          categories {
-            id
-            key
-            version
-            name(locale: "DE-DE")
-            description(locale: "DE-DE")
-            slug(locale: "DE-DE")
-            lastModifiedAt
-            metaTitle(locale: "DE-DE")
-          }
+        masterData {
+          current {
+            name(locale: "EN-US")
+            description(locale: "EN-US")
+            categories {
+              id
+              key
+              version
+              name(locale: "DE-DE")
+              description(locale: "DE-DE")
+              slug(locale: "DE-DE")
+              lastModifiedAt
+              metaTitle(locale: "DE-DE")
+            }
 
-          allVariants {
-            sku
-            prices {
-              country
-              value {
-                centAmount
-                fractionDigits
-              }
-            }
-            images {
-              url
-              dimensions {
-                width
-                height
-              }
-              label
-            }
-            attributesRaw (includeNames:["top-features", "product-plans"]){
-              name
-              value
+            allVariants {
+              sku
+              prices {
+                country
+                value {
+                  centAmount
+                  fractionDigits
                 }
-        
+              }
+              images {
+                url
+                dimensions {
+                  width
+                  height
+                }
+                label
+              }
+              attributesRaw(includeNames: ["top-features", "product-plans"]) {
+                name
+                value
+              }
+            }
           }
+          published
         }
-        published
       }
     }
   }
-}
 `;
 const DetailPage = ({ history }) => {
   const { loading, error, data } = useQuery(PRODUCTS);
@@ -78,7 +77,7 @@ const DetailPage = ({ history }) => {
       .get(
         `https://api.us-central1.gcp.commercetools.com/commerce-tool-poc/products/${queryString}`,
         {
-          headers: { Authorization: "Bearer xyO61RJgrwwMLDhS_06S06K1NUI2uVRW" },
+          headers: { Authorization: "Bearer 9Q10rUuAolWgR3vdyrscMj5rW3IZ4vNJ" },
         }
       )
       .then((response) =>
@@ -104,15 +103,18 @@ const DetailPage = ({ history }) => {
     restAPI.results &&
     restAPI.results.length > 0 &&
     restAPI.results.map((item) => item.masterData && item.masterData.current);
-console.log(restAPI &&
-  restAPI.masterData.current &&
-  restAPI.masterData.current.masterVariant &&
-  restAPI.masterData.current.masterVariant.attributes)
+  console.log(
+    restAPI &&
+      restAPI.masterData.current &&
+      restAPI.masterData.current.masterVariant &&
+      restAPI.masterData.current.masterVariant.attributes
+  );
   const Top_Features =
     restAPI &&
     restAPI.masterData.current &&
     restAPI.masterData.current.masterVariant &&
-    restAPI.masterData.current.masterVariant.attributes[5] && restAPI.masterData.current.masterVariant.attributes[5].value;
+    restAPI.masterData.current.masterVariant.attributes[5] &&
+    restAPI.masterData.current.masterVariant.attributes[5].value;
   const Top_Plans =
     restAPI &&
     restAPI.masterData.current &&

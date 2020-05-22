@@ -80,7 +80,7 @@ export default function Products() {
       .get(
         `https://api.us-central1.gcp.commercetools.com/commerce-tool-poc/products`,
         {
-          headers: { Authorization: "Bearer 5d4f69OBg9AsU4Vx0kkxMp1Scc6G3efB" },
+          headers: { Authorization: "Bearer 9Q10rUuAolWgR3vdyrscMj5rW3IZ4vNJ" },
         }
       )
       .then((response) =>
